@@ -3,7 +3,8 @@ import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import type { Content, ContentInput } from '../types/content';
 
-const DATA_FILE = path.join(__dirname, '..', '..', 'data', 'content.json');
+const DATA_FILE =
+  process.env.CONTENT_DATA_FILE ?? path.join(__dirname, '..', '..', 'data', 'content.json');
 
 async function readAll(): Promise<Content[]> {
   const raw = await fs.readFile(DATA_FILE, 'utf-8');
